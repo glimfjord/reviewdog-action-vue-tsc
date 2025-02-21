@@ -1,10 +1,10 @@
-name: 'Run tsc with reviewdog'
-description: '🐶 Run tsc with reviewdog to improve code checking and review experience for TypeScript-based modules.'
-author: 'EPMatt'
+name: "Run vue-tsc with reviewdog"
+description: "🐶 Run vue-tsc with reviewdog to improve code checking and review experience for TypeScript-based modules."
+author: "Glimfjord"
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN'
-    default: '${{ github.token }}'
+    description: "GITHUB_TOKEN"
+    default: "${{ github.token }}"
     required: false
   workdir:
     description: |
@@ -12,52 +12,52 @@ inputs:
       This is where the action will look for a
       package.json which declares typescript as a dependency.
       Default is `.`.
-    default: '.'
+    default: "."
     required: false
   ### Flags for reviewdog ###
   level:
     description: |
       Report level for reviewdog [info,warning,error].
       Default is `error`.
-    default: 'error'
+    default: "error"
     required: false
   reporter:
     description: |
       Reporter of reviewdog command [github-check,github-pr-check,github-pr-review].
       Default is `github-pr-check`.
-    default: 'github-pr-check'
+    default: "github-pr-check"
     required: false
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
       Default is `added`.
-    default: 'added'
+    default: "added"
     required: false
   fail_on_error:
     description: |
       Exit code for reviewdog when errors are found [true,false].
       Default is `false`.
-    default: 'false'
+    default: "false"
     required: false
   reviewdog_flags:
     description: |
       Additional reviewdog flags.
       Default is ``.
-    default: ''
+    default: ""
     required: false
   tool_name:
-    description: 'Tool name to use for reviewdog reporter'
-    default: 'tsc'
+    description: "Tool name to use for reviewdog reporter"
+    default: "tsc"
     required: false
   ### Flags for tsc ###
   tsc_flags:
     description: |
       Flags and args to pass to tsc.
       Default is ``.
-    default: ''
+    default: ""
     required: false
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - uses: reviewdog/action-setup@v1
       with:
@@ -75,7 +75,6 @@ runs:
         INPUT_TOOL_NAME: ${{ inputs.tool_name }}
         INPUT_TSC_FLAGS: ${{ inputs.tsc_flags }}
 
-
 branding:
-  icon: 'settings'
-  color: 'blue'
+  icon: "settings"
+  color: "blue"

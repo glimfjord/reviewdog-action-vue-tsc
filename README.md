@@ -1,6 +1,8 @@
+This fork replaces tsc with vue-tsc to allow typechecking of vue files
+
 # reviewdog-action-tsc
 
-![Maintained](https://img.shields.io/badge/maintained-yes-brightgreen) 
+![Maintained](https://img.shields.io/badge/maintained-yes-brightgreen)
 [![Tests](https://github.com/EPMatt/reviewdog-action-tsc/actions/workflows/test.yml/badge.svg)](https://github.com/EPMatt/reviewdog-action-tsc/actions/workflows/test.yml)
 [![Code Quality](https://github.com/EPMatt/reviewdog-action-tsc/actions/workflows/reviewdog.yml/badge.svg)](https://github.com/EPMatt/reviewdog-action-tsc/actions/workflows/reviewdog.yml)
 [![Deps auto update](https://github.com/EPMatt/reviewdog-action-tsc/actions/workflows/depup.yml/badge.svg)](https://github.com/EPMatt/reviewdog-action-tsc/actions/workflows/depup.yml)
@@ -23,8 +25,8 @@ For full documentation regarding reviewdog, its features and configuration optio
 ```yaml
 inputs:
   github_token:
-    description: 'GITHUB_TOKEN'
-    default: '${{ github.token }}'
+    description: "GITHUB_TOKEN"
+    default: "${{ github.token }}"
     required: false
   workdir:
     description: |
@@ -32,49 +34,49 @@ inputs:
       This is where the action will look for a
       package.json which declares typescript as a dependency.
       Default is `.`.
-    default: '.'
+    default: "."
     required: false
   ### Flags for reviewdog ###
   level:
     description: |
       Report level for reviewdog [info,warning,error].
       Default is `error`.
-    default: 'error'
+    default: "error"
     required: false
   reporter:
     description: |
       Reporter of reviewdog command [github-check,github-pr-check,github-pr-review].
       Default is `github-pr-check`.
-    default: 'github-pr-check'
+    default: "github-pr-check"
     required: false
   filter_mode:
     description: |
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
       Default is `added`.
-    default: 'added'
+    default: "added"
     required: false
   fail_on_error:
     description: |
       Exit code for reviewdog when errors are found [true,false].
       Default is `false`.
-    default: 'false'
+    default: "false"
     required: false
   reviewdog_flags:
     description: |
       Additional reviewdog flags.
       Default is ``.
-    default: ''
+    default: ""
     required: false
   tool_name:
-    description: 'Tool name to use for reviewdog reporter'
-    default: 'tsc'
+    description: "Tool name to use for reviewdog reporter"
+    default: "tsc"
     required: false
   ### Flags for tsc ###
   tsc_flags:
     description: |
       Flags and args to pass to tsc.
       Default is ``.
-    default: ''
+    default: ""
     required: false
 ```
 
@@ -165,6 +167,7 @@ jobs:
 ```
 
 ### Why can't I see the results?
+
 Try looking into the `filter_mode` options explained [here](https://github.com/reviewdog/reviewdog#filter-mode). TypeScript errors will sometimes appear in lines or files that weren't modified by the commit the workflow run is associated with, which instead get filtered with the default `added` option.
 
 ## Contributing
